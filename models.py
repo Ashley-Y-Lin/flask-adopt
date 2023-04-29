@@ -38,3 +38,20 @@ class Pets(db.Model):
     notes = db.Column(db.String(200), nullable=False, default="")
 
     available = db.Column(db.Boolean, nullable=False, default=True)
+
+class Pet_Finder_Pets(db.Model):
+    """Pet available for adoption"""
+
+    __tablename__ = "pet_finder"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    name = db.Column(db.String(50), nullable=False)
+
+    photo_url = db.Column(
+        db.Text,
+        nullable=False,
+        default="",
+    )
+    
+    age = db.Column(db.String(10), nullable=False)

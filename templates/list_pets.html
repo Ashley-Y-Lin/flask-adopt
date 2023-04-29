@@ -5,20 +5,34 @@
 {% block content %}
 
 <div>
+  <h1>Our pets</h1>
   <a href="/add" class="btn btn-primary">Add a pet!</a>
   {% for pet in pets %}
+  <div>
+    <h3><a href="/{{pet.id}}">{{pet.name}}</a></h3>
+    {% if pet.photo_url %}
     <div>
-      <h3>{{pet.name}}</h3>
-      {% if pet.photo_url %}
-        <div>
-          <img src={{pet.photo_url}} alt="Photo for {{pet.name}}" style="max-width: 200px">
-        </div>
-      {% endif %}
-      {% if pet.available %}
-        <b>Available</b>
-      {% endif %}
+      <img src={{pet.photo_url}} alt="Photo for {{pet.name}}" style="max-width: 200px">
     </div>
+    {% endif %}
+    {% if pet.available %}
+    <b>Available</b>
+    {% endif %}
+  </div>
   {% endfor %}
+</div>
+
+<div>
+  <h2>Random Petfinder Pet</h2>
+  <div>
+    <h3><a href="/{{pet_finder_pet.id}}">{{pet_finder_pet.name}}</a></h3>
+    <div>
+      <img src={{pet_finder_pet.photo_url}} alt="Photo for {{pet_finder_pet.name}}" style="max-width: 200px">
+    </div>
+    <div>
+      age: {{ pet_finder_pet.age }}
+    </div>
+  </div>
 </div>
 
 <!-- this is page containing all pets -->
